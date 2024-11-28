@@ -106,7 +106,6 @@ class UserController extends Controller
     {
         Auth::user()->tokens()->delete();
 
-
         return response()->json([
             'status'  => true,
             'message' => 'Logged Out Successfully',
