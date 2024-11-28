@@ -102,13 +102,16 @@ class UserController extends Controller
         }
     }
 
-    public function signout()
+    public function signOut(): \Illuminate\Http\JsonResponse
     {
-        Auth::logout();
+        Auth::user()->tokens()->delete();
+
 
         return response()->json([
-            'status' => true,
-            'message' => 'Signed out'
+            'status'  => true,
+            'message' => 'Logged Out Successfully',
+            'user'    => null,
+            'token'   => null,
         ], 200);
     }
 }
